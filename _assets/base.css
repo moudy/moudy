@@ -48,12 +48,19 @@ ul.posts span {
 /*
 /*****************************************************************************/
 
+.container { margin: 0 15px; }
+
 .site {
   font-size: 115%;
   text-align: justify;
-  width: 42em;
+  width: 640px;
   margin: 3em auto 2em;
   line-height: 1.5em;
+}
+
+/* Smartphones (portrait) ----------- */
+@media only screen and (max-width : 639px) {
+  .site { width: 100%; }
 }
 
 .site .header a {
