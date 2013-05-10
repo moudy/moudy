@@ -1,13 +1,29 @@
 ---
 layout: default
-title: Your New Jekyll Site
+title: Moudy | Software Engineer, Internet Expolorer
 ---
 
 <div id="home">
-  <h1>Blog Posts</h1>
-  <ul class="posts">
-    {% for post in site.posts %}
-      <li><span>{{ post.date | date_to_string }}</span> &raquo; <a href="{{ post.url }}">{{ post.title }}</a></li>
-    {% endfor %}
-  </ul>
+  <div class="greeting">
+    <img class="greeting-image" src="/images/profile-pic-2.jpg" alt="Moudy Elkammash" />
+    <h2 class="greeting-tagline light-gray-text">Hey there!</h2>
+    <h2 class="greeting-tagline">I'm Moudy Elkammash.</h2>
+  </div>
+
+  <div class="about-me">
+    <p>
+      I'm a programmer excited by the intersection of art &amp; technology. I mainly mainly work with JavaScript, Ruby and sometimes Objective-C when no one is looking.
+    </p>
+
+    TODO - put 3 photos across here that are random on page load
+
+    <p>
+      When not programming I like taking pictures.
+    </p>
+
+    <p>
+      You can find more of my photos at <a href="http://photo.moudy.me/">photo.moudy.me</a>.
+    </p>
+  </div>
+
 </div>

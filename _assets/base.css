@@ -58,11 +58,6 @@ ul.posts span {
   line-height: 1.5em;
 }
 
-/* Smartphones (portrait) ----------- */
-@media only screen and (max-width : 639px) {
-  .site { width: 100%; }
-}
-
 .site .header a {
   font-weight: bold;
   text-decoration: none;
@@ -102,4 +97,44 @@ ul.posts span {
   overflow: hidden;
 }
 
+.greeting {
+  min-height: 90px;
+  font-size: 150%;
+}
+
+.greeting-image {
+  float: left;
+  border-radius: 60px;
+  width: 90px;
+  height: 90px;
+  margin-right: 20px;
+  display: block;
+}
+
+.greeting-tagline {
+  padding-top: 15px;
+}
+
+.light-gray-text {
+  color: #aaa;
+}
+
+.about-me {
+  margin: 30px 0;
+}
+
+@media only screen and (max-width : 639px) {
+  .site { width: 100%; }
+}
+
+@media only screen and (max-width : 480px) {
+  .greeting-tagline {
+    font-size: 80%;
+    padding-top: 8px;
+  }
+  .greeting-image {
+    width: 70px;
+    height: 70px;
+  }
+}
 
