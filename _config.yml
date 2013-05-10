@@ -1,2 +1,4 @@
 name: Moudy
 pygments: true
+asset_pipeline:
+  gzip: true
