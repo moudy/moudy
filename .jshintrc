@@ -1,0 +1,9 @@
+{
+  "undef": true,
+  "unused": true,
+  "laxcomma": true,
+  "expr": true,
+  "browser": true,
+  "jquery": true,
+  "globals": { "App": false, "Backbone", "_" }
+}

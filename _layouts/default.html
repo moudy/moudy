@@ -5,6 +5,7 @@
         <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
         <title>{{ page.title }}</title>
         <meta name="viewport" content="width=device-width">
+        <meta name="Author" content="Moudy">
 
         {% css_asset_tag global %}
         - /_assets/normalize.css
@@ -12,37 +13,52 @@
         - /_assets/base.css
         - /_assets/post.css
         {% endcss_asset_tag %}
+        <link href='http://fonts.googleapis.com/css?family=Roboto+Slab' rel='stylesheet' type='text/css'>
+
+        <script type="text/javascript">
+          window.App = {};
+        </script>
 
     </head>
     <body>
 
         <div class="container">
-          <div class="site">
-            <div class="header">
-              <h1 class="title"><a href="/">{{ site.name }}</a></h1>
-              <a class="extra" href="/">home</a>
-              <a class="extra" href="/blog">blog</a>
-            </div>
 
-                {{ content }}
-
-            <div class="footer">
-              <div class="contact">
-                <p>
-                  Moudy Elkammash<br />
-                  Software Engineer, Internet Explorer<br />
-                  <script TYPE="text/javascript">
-                    var emailAddr = ('me@' + 'moudy.me');
-                    document.write('<a href="mailto:' + emailAddr + '">' + emailAddr + '</a>');
-                  </script>
-                  </br>
-                  <a href="http://github.com/moudy/">github.com/moudy</a><br />
-                  <a href="http://twitter.com/moudy/">twitter.com/moudy</a><br />
-                </p>
-              </div>
+          <header id="header">
+            <div class="content-width">
+              <img class="avatar-image" src="/images/profile-pic-2.jpg" alt="Moudy Elkammash" />
+              <h1 class="text-header-light">Moudy Elkammash</h1>
+              <h2 class="text-sub-header-light">internet expolerer & programmer</h2>
             </div>
+          </header>
+
+          <div class="content-width">
+            {{ content }}
           </div>
+
+          <footer class="footer">
+            <div class="content-width elsewhere-links">
+              <script TYPE="text/javascript">
+                var emailAddr = ('me@' + 'moudy.me');
+                document.write('<a class="elsewhere-link" href="mailto:' + emailAddr + '">email</a>');
+              </script>
+              <a class="elsewhere-link" target="_blank" href="http://github.com/moudy/">github</a>
+
+              <a class="elsewhere-link" target="_blank" href="http://twitter.com/moudy/">twitter</a>
+            </div>
+          </footer>
+
         </div> <!-- /container -->
+
+        {% javascript_asset_tag global %}
+        - /_assets/is_touch.js
+        - /_assets/underscore.js
+        - /_assets/jquery.js
+        - /_assets/backbone.js
+        - /_assets/backbone.uihelper.js
+        - /_assets/header_view.js
+        - /_assets/app.js
+        {% endjavascript_asset_tag %}
 
     </body>
 </html>

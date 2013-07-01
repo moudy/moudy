@@ -3,138 +3,137 @@
   padding: 0;
 }
 
+/*
+ *  Remove text-shadow in selection highlight: h5bp.com/i
+ *  These selection rule sets have to be separate.
+ *  Customize the background color to match your design.
+ */
+
+::-moz-selection {
+  background: #b3d4fc;
+  text-shadow: none;
+}
+
+::selection {
+  background: #b3d4fc;
+  text-shadow: none;
+}
+
+/*
+ * Remove the gap between images and the bottom of their containers: h5bp.com/i/440
+ */
+
+img {
+  vertical-align: middle;
+}
+
+* {
+  -moz-box-sizing: border-box;
+  -webkit-box-sizing: border-box;
+  box-sizing: border-box;
+}
+
+html {
+  -webkit-font-smoothing: antialiased;
+}
+
 html, body { height: 100%; }
 
 body {
-  font: 13.34px Helvetica, Arial, sans-serif;
+  12px/18px "Lucida Grande", "Lucida Sans Unicode", Helvetica, Arial, Verdana, sans-serif
+}
+
+ul {
+  list-style: none;
+  margin: 0;
+  padding: 0;
 }
 
 h1, h2, h3, h4, h5, h6 {
   font-size: 100%; }
 
 h1 { margin-bottom: 1em; }
-p { margin: 1em 0; }
+p { margin: 0 0 20px; }
 
 a {
   text-decoration: none;
-  color: #00a; }
+  color: #333; }
 a:hover { text-decoration: underline; }
-a:visited { color: #a0a; }
+a:visited { color: #333; }
 
 
-/*****************************************************************************/
-/*
-/* Home
-/*
-/*****************************************************************************/
-ul.posts {
-  list-style-type: none;
-  margin-bottom: 2em;
+.content-width {
+  width: 460px;
+  margin: 0 auto;
+  padding: 0 10px;
 }
 
-ul.posts li {
-  line-height: 1.75em;
+/*text.css*/
+
+.text-header-light {
+  font-size: 24px;
+  font-weight: 700;
+  margin: 10px 0 0;
+  color: #444;
+  font-family: 'Roboto Slab', serif;
 }
 
-ul.posts span {
-  color: #aaa;
-  font-family: Monaco, "Courier New", monospace;
-  font-size: 80%;
+.text-sub-header-light {
+  font-size: 18px;
+  font-weight: 200;
+  color: #bbb;
+  font-family: 'Roboto Slab', serif;
 }
 
-/*****************************************************************************/
-/*
-/* Site
-/*
-/*****************************************************************************/
-
-.container { margin: 0 15px; }
-
-.site {
-  font-size: 115%;
-  text-align: justify;
-  width: 640px;
-  margin: 3em auto 2em;
-  line-height: 1.5em;
+/*header.css*/
+#header {
+  text-align: center;
+  padding: 100px 0 20px
 }
 
-.site .header a {
-  font-weight: bold;
-  text-decoration: none;
-}
-
-.site .header h1.title {
-  display: inline-block;
-  margin-bottom: 2em;
-}
-
-.site .header h1.title a {
-  color: #a00;
-}
-
-.site .header h1.title a:hover {
-  color: #000;
-}
-
-.site .header a.extra {
-  color: #aaa;
-  margin-left: 1em;
-}
-
-.site .header a.extra:hover {
-  color: #000;
-}
-
-.site .meta {
-  color: #aaa;
-}
-
-.site .footer {
-  font-size: 80%;
-  color: #666;
-  border-top: 4px solid #eee;
-  margin-top: 2em;
-  overflow: hidden;
-}
-
-.greeting {
-  min-height: 90px;
-  font-size: 150%;
-}
-
-.greeting-image {
-  float: left;
-  border-radius: 60px;
-  width: 90px;
-  height: 90px;
-  margin-right: 20px;
-  display: block;
-}
-
-.greeting-tagline {
-  padding-top: 15px;
-}
-
-.light-gray-text {
-  color: #aaa;
+.avatar-image {
+  height: 100px;
+  width: 100px;
+  border-radius: 100px;
+  background: #aaa;
+  -webkit-transform-origin-y: 100px;
 }
 
 .about-me {
-  margin: 30px 0;
+  text-align: center;
 }
 
-@media only screen and (max-width : 639px) {
-  .site { width: 100%; }
+.p-content {
+  color: #777;
+  font-weight: 400;
+  font-size: 18px;
+  line-height: 1.45;
 }
 
-@media only screen and (max-width : 480px) {
-  .greeting-tagline {
-    font-size: 80%;
-    padding-top: 8px;
+.elsewhere-links {
+  text-align: center;
+}
+
+.elsewhere-link {
+  color: #aaa;
+  font-size: 14px;
+  display: inline-block;
+  padding: 2px 4px;
+  margin: 4px;
+}
+
+.elsewhere-link:visited {
+  color: #aaa;
+}
+
+@media (max-width: 480px) {
+
+  .content-width {
+    width: 100%;
   }
-  .greeting-image {
-    width: 70px;
-    height: 70px;
-  }
-}
 
+  #header {
+    padding-top: 20px;
+  }
+
+}
