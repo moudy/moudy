@@ -2,6 +2,7 @@ name: Moudy
 pygments: true
 source: ./_source
 plugins: ./_source/_plugins
+exclude: [Gemfile, Gemfile.lock]
 
 asset_pipeline:
   gzip: true
