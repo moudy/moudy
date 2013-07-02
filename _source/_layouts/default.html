@@ -18,38 +18,42 @@
 
         <script type="text/javascript">
           window.App = {};
+          window.App.scrollToRead = function () { };
+          window.App.isPost = {% if page.post %}true{% else %}false{% endif %};
+
+          (function (t) {
+            var docElement = t.document.documentElement
+              , classNames = docElement.className.split(' ');
+
+            classNames.push('js');
+            if (App.isPost) classNames.push('post');
+
+            docElement.className = classNames.join(' ');
+
+            if (!window.location.hash.match(/^#read/) && App.isPost) window.location.hash = '#read';
+          })(this);
         </script>
 
     </head>
     <body>
 
-        <div class="container">
+    <div class="container">
 
-          <header id="header">
-            <div class="content-width">
-              <img class="avatar-image" src="/images/profile-pic-2.jpg" alt="Moudy Elkammash" />
-              <h1 class="text-header-light">Moudy Elkammash</h1>
-              <h2 class="text-sub-header-light">internet explorer & programmer</h2>
-            </div>
-          </header>
+      <div id="site-header">
+        <div class="hero-width">
+          {% include header.html %}
+          {% include about.html %}
+          {% include footer.html %}
+        </div>
+      </div>
 
-          <div class="content-width">
-            {{ content }}
-          </div>
+      <div class="site-content">
+        <div id="read" class="content-width">
+          {{ content }}
+        </div>
+      </div>
 
-          <footer class="footer">
-            <div class="content-width elsewhere-links">
-              <script TYPE="text/javascript">
-                var emailAddr = ('me@' + 'moudy.me');
-                document.write('<a class="elsewhere-link" href="mailto:' + emailAddr + '">email</a>');
-              </script>
-              <a class="elsewhere-link" target="_blank" href="http://github.com/moudy/">github</a>
-
-              <a class="elsewhere-link" target="_blank" href="http://twitter.com/moudy/">twitter</a>
-            </div>
-          </footer>
-
-        </div> <!-- /container -->
+    </div> <!-- /container -->
 
         {% javascript_asset_tag global %}
         - /_assets/is_touch.js

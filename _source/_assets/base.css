@@ -62,8 +62,14 @@ a:hover { text-decoration: underline; }
 a:visited { color: #333; }
 
 
-.content-width {
+.hero-width {
   width: 460px;
+  margin: 0 auto;
+  padding: 0 10px;
+}
+
+.content-width {
+  width: 600px;
   margin: 0 auto;
   padding: 0 10px;
 }
@@ -73,7 +79,7 @@ a:visited { color: #333; }
 .text-header-light {
   font-size: 24px;
   font-weight: 700;
-  margin: 10px 0 0;
+  margin: 8px 0 0;
   color: #444;
   font-family: 'Roboto Slab', serif;
 }
@@ -86,9 +92,18 @@ a:visited { color: #333; }
 }
 
 /*header.css*/
-#header {
+#site-header {
+  border-bottom: 1px solid transparent;
   text-align: center;
-  padding: 100px 0 20px
+  padding: 100px 0 0;
+}
+
+.post #header {
+  /*padding-top: 20px;*/
+}
+.post #header h1,
+.post #header h2 {
+  cursor: pointer;
 }
 
 .avatar-image {
@@ -100,7 +115,9 @@ a:visited { color: #333; }
 }
 
 .about-me {
+  margin: 20px 0 0;
   text-align: center;
+  overflow: hidden;
 }
 
 .p-content {
@@ -128,7 +145,7 @@ a:visited { color: #333; }
 
 @media (max-width: 480px) {
 
-  .content-width {
+  .hero-width, .content-width {
     width: 100%;
   }
 
@@ -137,3 +154,26 @@ a:visited { color: #333; }
   }
 
 }
+
+.footer {
+  /*padding-bottom: 20px;*/
+  overflow: hidden;
+}
+
+/*temporary*/
+#read {
+  padding-top: 20px;
+}
+
+.site-content {
+  transition: all 0.2s;
+}
+
+.hero-focus .site-content {
+  opacity: 0.2;
+}
+
+.hero-focus #site-header {
+  border-color: #ddd;
+}
+
