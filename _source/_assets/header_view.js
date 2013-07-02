@@ -1,5 +1,6 @@
 window.App.HeaderView = Backbone.View.extend({
   initialize: function () {
+    this.$body = $('body');
     this.$aboutMe = this.$('.about-me');
     this.$footer = this.$('.footer');
     this.$img = this.$('.avatar-image');
@@ -9,9 +10,27 @@ window.App.HeaderView = Backbone.View.extend({
     this.listenTo(this.state, 'change:scale', this.onScaleChange);
     if (App.isPost) this.listenTo(this.state, 'change:heroFocus', this.onHeroFocusChange);
 
+    this.listenTo(App, 'click:heroBlanket', this.scrollToSiteContent);
+
     this.$window = $(window);
     var onScroll = _.throttle(this.onScroll.bind(this), 10);
     this.$window.on('scroll', onScroll);
+
+    this.initUI();
+  }
+
+, initUI: function () {
+    this.scrollToSiteContent();
+    this.$body.addClass('init-ui');
+  }
+
+, scrollToSiteContent: function (animate) {
+    var value = this.imageOffset.top + this.imageHeight - this.imageMarginTop;
+    if (animate) {
+      $('html, body').animate({ scrollTop: value }, 150);
+    } else {
+      $('html, body').scrollTop(value);
+    }
   }
 
 , events: {
@@ -19,17 +38,20 @@ window.App.HeaderView = Backbone.View.extend({
   }
 
 , onHClick: function () {
-    $('html, body').animate({ scrollTop: 0 }, 80);
+    $('html, body').animate({ scrollTop: 0 }, 150);
   }
 
 , setDimensions: function () {
-    var imageMarginTop = 10;
+    this.imageMarginTop = 10;
 
     this.imageOffset = this.$img.offset();
     this.imageHeight = this.$img.outerHeight();
     this.maxImageHeight = this.imageOffset.top + this.imageHeight;
-    this.scrollImageContractBegin = this.imageOffset.top - imageMarginTop;
+    this.scrollImageContractBegin = this.imageOffset.top - this.imageMarginTop;
     this.scrollImageContractFinish = this.scrollImageContractBegin + this.imageHeight;
+
+    this.footerHeight = this.$footer.outerHeight();
+    this.aboutMeHeight = this.$aboutMe.outerHeight();
   }
 
 , onScroll: function () {
@@ -60,32 +82,29 @@ window.App.HeaderView = Backbone.View.extend({
   }
 
 , onHeroFocusChange: function (state, heroFocus) {
-    $('body').toggleClass('hero-focus', heroFocus);
+    this.$body.toggleClass('hero-focus', heroFocus);
   }
 
 , onScaleChange: function (state, scale) {
-    var aboutMeCss = {}
-      , footerCss = {}
-      , ABOUT_ME_HEIGHT = 140
-      , FOOTER_HEIGHT = 40;
+    var scaleInRange = (scale >= 0) && (scale <= 1);
 
-    aboutMeCss.height = ABOUT_ME_HEIGHT * scale;
-    aboutMeCss.opacity = scale;
-    aboutMeCss['-webkit-transform'] = 'scaleY(' + scale + ')';
-    //aboutMeCss['-webkit-transform'] = 'scaleX(' + scale + ')';
-
-    footerCss.height = FOOTER_HEIGHT * scale;
-    footerCss.opacity = scale;
-    footerCss['-webkit-transform'] = 'scaleY(' + scale + ')';
-
-    console.log(footerCss, this.$footer)
-
-    this.$footer.css(footerCss);
-    this.$aboutMe.css(aboutMeCss);
-    console.log('scale', scale)
+    console.log('scale', scale, 'easeOut:', App.easeOut(scale), 'easeIn:', App.easeIn(scale));
 
     this.$img.css({
       '-webkit-transform': 'scale(' + scale + ')'
+    , 'opacity': scaleInRange ? App.easeIn(scale) : scale
+    });
+
+    this.$aboutMe.css({
+      'height': this.aboutMeHeight * (scaleInRange ? App.easeOut(scale) : scale)
+     ,'opacity' : scaleInRange ? App.easeIn(scale) : scale
+     ,'-webkit-transform': 'scaleY(' + (scaleInRange ? App.easeOut(scale) : scale) + ')'
+    });
+
+    this.$footer.css({
+      'height': this.footerHeight * (scaleInRange ? App.easeIn(scale) : scale)
+    , 'opacity': scaleInRange ? App.easeIn(scale) : scale
+    , '-webkit-transform': 'scaleY(' + scale + ')'
     });
   }
 

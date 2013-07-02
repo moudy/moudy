@@ -30,7 +30,6 @@
 
             docElement.className = classNames.join(' ');
 
-            if (!window.location.hash.match(/^#read/) && App.isPost) window.location.hash = '#read';
           })(this);
         </script>
 
@@ -51,17 +50,21 @@
         <div id="read" class="content-width">
           {{ content }}
         </div>
+        <div class="hero-focus-blanket"></div>
       </div>
 
     </div> <!-- /container -->
 
         {% javascript_asset_tag global %}
         - /_assets/is_touch.js
+        - /_assets/keyspline.js
+        - /_assets/easing.js
         - /_assets/underscore.js
         - /_assets/jquery.js
         - /_assets/backbone.js
         - /_assets/backbone.uihelper.js
         - /_assets/header_view.js
+        - /_assets/site_content_view.js
         - /_assets/app.js
         {% endjavascript_asset_tag %}
 
