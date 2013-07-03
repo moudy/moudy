@@ -13,14 +13,17 @@ window.App.HeaderView = Backbone.View.extend({
     this.listenTo(App, 'click:heroBlanket', this.scrollToSiteContent);
 
     this.$window = $(window);
-    var onScroll = _.throttle(this.onScroll.bind(this), 10);
-    this.$window.on('scroll', onScroll);
 
+    if (!App.isTouch()) {
+      var onScroll = _.throttle(this.onScroll.bind(this), 10);
+      this.$window.on('scroll', onScroll);
+    }
+
+    if (App.isPost) this.scrollToSiteContent();
     this.initUI();
   }
 
 , initUI: function () {
-    this.scrollToSiteContent();
     this.$body.addClass('init-ui');
   }
 
