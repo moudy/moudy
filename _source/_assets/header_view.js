@@ -91,7 +91,7 @@ window.App.HeaderView = Backbone.View.extend({
 , onScaleChange: function (state, scale) {
     var scaleInRange = (scale >= 0) && (scale <= 1);
 
-    console.log('scale', scale, 'easeOut:', App.easeOut(scale), 'easeIn:', App.easeIn(scale));
+    //console.log('scale', scale, 'easeOut:', App.easeOut(scale), 'easeIn:', App.easeIn(scale));
 
     this.$img.css({
       '-webkit-transform': 'scale(' + scale + ')'
