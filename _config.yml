@@ -5,5 +5,3 @@ plugins: ./_source/_plugins
 exclude: [Gemfile, Gemfile.lock]
 permalink: /:year/:month/:day/:title
 
-asset_pipeline:
-  gzip: true

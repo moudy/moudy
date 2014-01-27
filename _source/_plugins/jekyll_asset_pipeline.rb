@@ -25,3 +25,4 @@ module JekyllAssetPipeline
     end
   end
 end
+

@@ -1,72 +1,21 @@
 <!DOCTYPE html>
 <html>
-    <head>
-        <meta charset="utf-8">
-        <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
-        <title>{{ page.title }}</title>
-        <meta name="viewport" content="width=device-width">
-        <meta name="Author" content="Moudy">
-        <meta name="Description" content="Moudy Elkammash, Internet Explorer and Programmer">
-
-        {% css_asset_tag global %}
-        - /_assets/normalize.css
-        - /_assets/syntax.css
-        - /_assets/base.css
-        - /_assets/post.css
-        {% endcss_asset_tag %}
-        <link href='http://fonts.googleapis.com/css?family=Roboto+Slab' rel='stylesheet' type='text/css'>
-
-        <script type="text/javascript">
-          window.App = {};
-          window.App.scrollToRead = function () { };
-          window.App.isPost = {% if page.post %}true{% else %}false{% endif %};
-
-          (function (t) {
-            var docElement = t.document.documentElement
-              , classNames = docElement.className.split(' ');
-
-            classNames.push('js');
-            if (App.isPost) classNames.push('post');
-
-            docElement.className = classNames.join(' ');
-
-          })(this);
-        </script>
-
-    </head>
-    <body>
-
-    <div class="container">
-
-      <div id="site-header">
-        <div class="hero-width">
-          {% include header.html %}
-          {% include about.html %}
-          {% include footer.html %}
-        </div>
-      </div>
-
-      <div class="site-content">
-        <div id="read" class="content-width">
-          {{ content }}
-        </div>
-        <div class="hero-focus-blanket"></div>
-      </div>
-
-    </div> <!-- /container -->
-
-        {% javascript_asset_tag global %}
-        - /_assets/is_touch.js
-        - /_assets/keyspline.js
-        - /_assets/easing.js
-        - /_assets/underscore.js
-        - /_assets/jquery.js
-        - /_assets/backbone.js
-        - /_assets/backbone.uihelper.js
-        - /_assets/header_view.js
-        - /_assets/site_content_view.js
-        - /_assets/app.js
-        {% endjavascript_asset_tag %}
-
-    </body>
+  <head>
+    <meta charset="utf-8">
+    <title>{{ page.title }}</title>
+    <meta name="Author" content="Moudy">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0">
+    <meta name="Description" content="Moudy Elkammash, Internet Explorer and Programmer">
+    {% css_asset_tag global %}
+    - /_assets/css/normalize.css
+    - /_assets/css/app.css
+    {% endcss_asset_tag %}
+  </head>
+  <body>
+    {% include header.html %}
+    {{ content }}
+    {% javascript_asset_tag global %}
+    - /_assets/app.js
+    {% endjavascript_asset_tag %}
+  </body>
 </html>
