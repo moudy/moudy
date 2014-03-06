@@ -1,7 +1,4 @@
 name: Moudy
+permalink: pretty
+markdown: redcarpet
 pygments: true
-source: ./_source
-plugins: ./_source/_plugins
-exclude: [Gemfile, Gemfile.lock]
-permalink: /:year/:month/:day/:title
-

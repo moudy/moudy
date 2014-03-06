@@ -1,0 +1,15 @@
+@import 'base';
+
+.text {
+  font-size: 18px;
+  line-height: 1.5;
+
+  h1, h2, h3, h4, h5, h6 {
+    @include sans();
+  }
+
+  h1 { font-size: 22px; }
+  h2 { font-size: 20px; }
+
+
+}
