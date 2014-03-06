@@ -2,3 +2,5 @@ name: Moudy
 permalink: pretty
 markdown: redcarpet
 pygments: true
+source: ./_source
+plugins: ./_source/_plugins
