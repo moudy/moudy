@@ -1,110 +1,49 @@
-<!DOCTYPE html>
-<html>
-  <head>
-    <meta charset="utf-8">
-    <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
-    <title>Moudy Elkammash</title>
-    <meta name="viewport" content="width=device-width">
-    <link href='http://fonts.googleapis.com/css?family=PT+Sans+Narrow:400,700|Crimson+Text' rel='stylesheet' type='text/css'>
-    <link rel="stylesheet" href="/assets/app-72babe29dead030ef94674970b4a7086.css">
-  </head>
-  <body>
+---
+layout: default
+title:  Moudy Elkammash
+---
 
-  <div class="site">
-    <header class='header'>
-  <div class='content-width'>
-    <div class='header-content'>
-      <h1 class='header-title sans-bold'>
-        <a class='no-underline' href='/'>
-          Moudy Elkammash
-        </a>
-      </h1>
-    </div>
-  </div>
-</header>
+<div class="page-home">
+  <div class="content-width">
 
-
-    <div class='page-home'>
-  <div class='content-width'>
-
-    <div class='list-section'>
-      <h3 class='text-heading'>
+    <div class="list-section">
+      <h3 class="text-heading">
         Projects
       </h3>
-      <ul class='list'>
-        
-        <li>
-          WorkOf <a href='http://www.workof.com/' target='_blank' class='project-url'>(http://www.workof.com/)</a>
-        </li>
-        
-        <li>
-          ViceHd <a href='https://github.com/vrsity/vicehd' target='_blank' class='project-url'>(https://github.com/vrsity/vicehd)</a>
-        </li>
-        
-        <li>
-          NYPD <a href='http://www.n-y-p-d.com/' target='_blank' class='project-url'>(http://www.n-y-p-d.com/)</a>
-        </li>
-        
-        <li>
-          Photography <a href='http://photo.moudy.me/' target='_blank' class='project-url'>(http://photo.moudy.me/)</a>
-        </li>
-        
+      <ul class="list">
+        {% for project in site.data.projects %}
+          <li>
+            {{ project.name }} <a href="{{ project.url }}" target="_blank" class="project-url">({{ project.url }})</a>
+          </li>
+        {% endfor %}
       </ul>
     </div>
 
-    <div class='list-section'>
-      <h3 class='text-heading'>
+    <div class="list-section">
+      <h3 class="text-heading">
         Currently
       </h3>
-      <ul class='list'>
-        
+      <ul class="list">
+        {% for a in site.data.about %}
         <li>
-          Available for select projects
+          {{ a.text }}
         </li>
-        
-        <li>
-          Based in Flatiron, New York City
-        </li>
-        
-
+        {% endfor %}
       </ul>
     </div>
 
-    <div class='list-section'>
-      <h3 class='text-heading'>
+    <div class="list-section">
+      <h3 class="text-heading">
         Previously
       </h3>
-      <ul class='list'>
-        
-        <li>
-          Codecademy <a href='http://www.codecademy.com/' target='_blank' class='project-url'>(http://www.codecademy.com/)</a>
-        </li>
-        
-        <li>
-          BestVendor <a href='http://bestvendor.com/' target='_blank' class='project-url'>(http://bestvendor.com/)</a>
-        </li>
-        
+      <ul class="list">
+        {% for e in site.data.experience %}
+          <li>
+            {{ e.name }} <a href="{{ e.url }}" target="_blank" class="project-url">({{ e.url }})</a>
+          </li>
+        {% endfor %}
       </ul>
     </div>
 
   </div>
 </div>
-
-
-    <footer class='footer'>
-  <div class='content-width'>
-    <div class='footer-links'>
-      <script>
-        var emailAddr = ('me@' + 'moudy.me');
-        document.write('<a class="footer-link" href="mailto:'+emailAddr+'">Email</a>');
-      </script>
-      <a class='footer-link' target='_blank' href='http://github.com/moudy/'>GitHub</a>
-      <a class='footer-link' target='_blank' href='http://twitter.com/moudy/'>Twitter</a>
-    </div>
-  </div>
-</footer>
-
-  </div>
-
-  </body>
-</html>
