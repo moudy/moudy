@@ -92,5 +92,35 @@ pre {
   padding: 10px;
 }
 
+.js {
+  .domino-1,
+  .domino-2,
+  .domino-3,
+  .domino-4,
+  .domino-5 {
+    opacity: 0;
+    transition-duration: 700ms;
+    transition-property: opacity;
+  }
+}
+
+
+
+.ready {
+  .domino-1,
+  .domino-2,
+  .domino-3,
+  .domino-4,
+  .domino-5 {
+    opacity: 1;
+  }
+}
+
+.domino-1 { transition-delay: 50ms; }
+.domino-2 { transition-delay: 100ms; }
+.domino-3 { transition-delay: 150ms; }
+.domino-4 { transition-delay: 200ms; }
+.domino-5 { transition-delay: 250ms; }
+
 @import 'post';
 @import 'syntax';
