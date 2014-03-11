@@ -5,11 +5,3 @@ pygments: true
 source: ./_source
 plugins: ./_source/_plugins
 
-#assets:
-  #dirname: assets
-
-  #baseurl: /assets/
-
-  #sources:
-    #- _source/_assets/stylesheets
-    #- _source/_assets/javascripts

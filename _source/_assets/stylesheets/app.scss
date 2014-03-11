@@ -2,13 +2,8 @@
 @import 'normalize';
 @import 'site_reset';
 
-.sans {
-  @include sans();
-}
-
-.serif {
-  font-family: 'Crimson Text', serif;
-}
+.sans { @include sans(); }
+.serif { font-family: 'Crimson Text', serif; }
 
 body {
   font-size: 14px;
@@ -18,12 +13,8 @@ body {
 a {
   text-decoration: none;
   color: $color-text;
-  &:hover {
-    text-decoration: underline;
-  }
-  &.no-underline:hover {
-    text-decoration: none;
-  }
+  &:hover { text-decoration: underline; }
+  &.no-underline:hover { text-decoration: none; }
 }
 
 .sans-bold {
