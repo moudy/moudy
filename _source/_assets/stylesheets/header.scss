@@ -34,6 +34,7 @@
 .header-title {
   font-size: 26px;
   color: $color-text;
+  a { color: inherit; }
 }
 
 .header-subtitle {

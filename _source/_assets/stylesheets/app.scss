@@ -12,7 +12,7 @@ body {
 
 a {
   text-decoration: none;
-  color: $color-text;
+  color: $color-text-link;
   &:hover { text-decoration: underline; }
   &.no-underline:hover { text-decoration: none; }
 }
@@ -112,6 +112,13 @@ pre {
 .domino-3 { transition-delay: 150ms; }
 .domino-4 { transition-delay: 200ms; }
 .domino-5 { transition-delay: 250ms; }
+
+p code {
+  font-size: 12px;
+  border: 1px solid #ddd;
+  padding: 3px 5px;
+  border-radius: 3px;
+}
 
 @import 'post';
 @import 'syntax';
