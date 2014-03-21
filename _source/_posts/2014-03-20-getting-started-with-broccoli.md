@@ -5,7 +5,7 @@ date:   2014-01-20 14:15:47
 ---
 
 ## What is Brocolli?
-When I first looked at [Broccoli](https://github.com/joliss/broccoli) I wasn't clear about what it was and how to use it. It took me a second to understand that it's a web server (a [connect](https://github.com/senchalabs/connect) app) that serves up files on port 4200 by default. If you're confused by how Broccoli works going through the following example should remove most of the mystery.
+When I first looked at [Broccoli](https://github.com/joliss/broccoli) I wasn't clear about what it was and how to use it. It took me a second to understand that it's a web server (a [connect](https://github.com/senchalabs/connect) app) that watches for changes to files and serves them up on port 4200 by default. If you're confused by how Broccoli works going through the following example should remove most of the mystery.
 
 ## The Simplest Example
 In a new directory create `Brocfile.js` and `javascripts/app.js`.
