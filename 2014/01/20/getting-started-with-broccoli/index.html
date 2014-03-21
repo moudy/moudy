@@ -37,11 +37,11 @@
   <div class="post">
   <h2>What is Brocolli?</h2>
 
-<p>When I first looked at <a href="https://github.com/joliss/broccoli">Broccoli</a> I wasn&#39;t clear about what it was and how to use it. It took me a second to understand that it&#39;s a web server (a <a href="https://github.com/senchalabs/connect">connect</a> app) that serves up files on port 4200 by default. If you&#39;re confused by how Broccoli works going through the following example will remove most of the mystery.</p>
+<p>When I first looked at <a href="https://github.com/joliss/broccoli">Broccoli</a> I wasn&#39;t clear about what it was and how to use it. It took me a second to understand that it&#39;s a web server (a <a href="https://github.com/senchalabs/connect">connect</a> app) that serves up files on port 4200 by default. If you&#39;re confused by how Broccoli works going through the following example should remove most of the mystery.</p>
 
 <h2>The Simplest Example</h2>
 
-<p>In a new directory create <code>Broccoli.js</code> and <code>javascripts/app.js</code>.</p>
+<p>In a new directory create <code>Brocfile.js</code> and <code>javascripts/app.js</code>.</p>
 <div class="highlight"><pre><code class="js language-js" data-lang="js"><span class="c1">// Brocfile.js</span>
 <span class="nx">module</span><span class="p">.</span><span class="nx">exports</span> <span class="o">=</span> <span class="kd">function</span> <span class="p">(</span><span class="nx">broccoli</span><span class="p">)</span> <span class="p">{</span>
   <span class="kd">var</span> <span class="nx">tree</span> <span class="o">=</span> <span class="nx">broccoli</span><span class="p">.</span><span class="nx">makeTree</span><span class="p">(</span><span class="s1">&#39;javascripts&#39;</span><span class="p">);</span>
@@ -75,7 +75,7 @@ broccoli serve
   <span class="k">return</span> <span class="p">[</span><span class="nx">tree</span><span class="p">];</span>
 <span class="p">};</span>
 </code></pre></div>
-<p>Add some snazzy ES6 code to <code>app.js</code></p>
+<p>Add some snazzy ES6 code to <code>javascripts/app.js</code></p>
 <div class="highlight"><pre><code class="js language-js" data-lang="js"><span class="kd">var</span> <span class="p">[</span><span class="nx">foo</span><span class="p">,</span> <span class="nx">bar</span><span class="p">]</span> <span class="o">=</span> <span class="p">[</span><span class="s1">&#39;foo&#39;</span><span class="p">,</span> <span class="s1">&#39;bar&#39;</span><span class="p">];</span>
 </code></pre></div>
 <p>Restart the broccoli server and you should see something like the following at <a href="http://localhost:4200/app.js">http://localhost:4200/app.js</a>.</p>
@@ -88,8 +88,13 @@ broccoli serve
 <h2>Using Multiple Plugins</h2>
 
 <p>Since broccoli plugins return file trees you can chain plugins. If you wanted to also minify your code you can run it through the <a href="https://github.com/joliss/broccoli-uglify-js">UglifyJS Plugin</a>.</p>
-<div class="highlight"><pre><code class="js language-js" data-lang="js"><span class="p">...</span>
+<div class="highlight"><pre><code class="sh language-sh" data-lang="sh">npm install --save broccoli-uglify-js
+</code></pre></div><div class="highlight"><pre><code class="js language-js" data-lang="js"><span class="p">...</span>
+<span class="kd">var</span> <span class="nx">traceur</span> <span class="o">=</span> <span class="nx">require</span><span class="p">(</span><span class="s1">&#39;broccoli-traceur&#39;</span><span class="p">);</span>
+<span class="kd">var</span> <span class="nx">uglifyJavaScript</span> <span class="o">=</span> <span class="nx">require</span><span class="p">(</span><span class="s1">&#39;broccoli-uglify-js&#39;</span><span class="p">);</span>
+
 <span class="kd">var</span> <span class="nx">tree</span> <span class="o">=</span> <span class="nx">broccoli</span><span class="p">.</span><span class="nx">makeTree</span><span class="p">(</span><span class="s1">&#39;javascripts&#39;</span><span class="p">);</span>
+
 <span class="nx">tree</span> <span class="o">=</span> <span class="nx">traceur</span><span class="p">(</span><span class="nx">tree</span><span class="p">);</span>
 <span class="nx">tree</span> <span class="o">=</span> <span class="nx">uglifyJavaScript</span><span class="p">(</span><span class="nx">tree</span><span class="p">);</span>
 <span class="p">...</span>

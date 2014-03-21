@@ -5,10 +5,10 @@ date:   2014-01-20 14:15:47
 ---
 
 ## What is Brocolli?
-When I first looked at [Broccoli](https://github.com/joliss/broccoli) I wasn't clear about what it was and how to use it. It took me a second to understand that it's a web server (a [connect](https://github.com/senchalabs/connect) app) that serves up files on port 4200 by default. If you're confused by how Broccoli works going through the following example will remove most of the mystery.
+When I first looked at [Broccoli](https://github.com/joliss/broccoli) I wasn't clear about what it was and how to use it. It took me a second to understand that it's a web server (a [connect](https://github.com/senchalabs/connect) app) that serves up files on port 4200 by default. If you're confused by how Broccoli works going through the following example should remove most of the mystery.
 
 ## The Simplest Example
-In a new directory create `Broccoli.js` and `javascripts/app.js`.
+In a new directory create `Brocfile.js` and `javascripts/app.js`.
 
 ``` js
 // Brocfile.js
@@ -56,7 +56,7 @@ module.exports = function (broccoli) {
 };
 ```
 
-Add some snazzy ES6 code to `app.js`
+Add some snazzy ES6 code to `javascripts/app.js`
 
 ``` js
 var [foo, bar] = ['foo', 'bar'];
@@ -75,9 +75,17 @@ var $__0 = ['foo', 'bar'],
 ## Using Multiple Plugins
 Since broccoli plugins return file trees you can chain plugins. If you wanted to also minify your code you can run it through the [UglifyJS Plugin](https://github.com/joliss/broccoli-uglify-js).
 
+``` sh
+npm install --save broccoli-uglify-js
+```
+
 ``` js
 ...
+var traceur = require('broccoli-traceur');
+var uglifyJavaScript = require('broccoli-uglify-js');
+
 var tree = broccoli.makeTree('javascripts');
+
 tree = traceur(tree);
 tree = uglifyJavaScript(tree);
 ...
