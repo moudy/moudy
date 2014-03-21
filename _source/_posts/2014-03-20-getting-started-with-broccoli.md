@@ -1,7 +1,7 @@
 ---
 layout: post
 title:  "Getting Started with Broccoli"
-date:   2014-01-22 14:15:47
+date:   2014-01-20 14:15:47
 ---
 
 ## What is Brocolli?

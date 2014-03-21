@@ -1,0 +1,133 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+    <title>Getting Started with Broccoli</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1, minimum-scale=1.0, maximum-scale=1.0, minimal-ui" />
+    <link href='http://fonts.googleapis.com/css?family=PT+Sans+Narrow:400,700|Crimson+Text' rel='stylesheet' type='text/css'>
+
+    <script>
+      (function () {
+        var de = document.documentElement;
+        de.className = de.className+' js';
+      })();
+    </script>
+    <link rel="stylesheet" href="/assets/app-82c79331ca5720b895fbbf67bbc8ad06.css">
+  </head>
+  <body>
+    <div class="site">
+      <header class='header domino-1'>
+  <div class='content-width'>
+    <div class='header-content'>
+      <h1 class='header-title sans-bold'>
+        <a class='no-underline' href='/'>
+          Moudy Elkammash
+        </a>
+      </h1>
+    </div>
+  </div>
+</header>
+
+
+      <div class='content-width text post-container'>
+  <h1>Getting Started with Broccoli</h1>
+  <div class="subtitle">20 Jan 2014</div>
+
+  <div class="post">
+  <h2>What is Brocolli?</h2>
+
+<p>When I first looked at <a href="https://github.com/joliss/broccoli">Broccoli</a> I wasn&#39;t clear about what it was and how to use it. It took me a second to understand that it&#39;s a web server (a <a href="https://github.com/senchalabs/connect">connect</a> app) that serves up files on port 4200 by default. If you&#39;re confused by how Broccoli works going through the following example will remove most of the mystery.</p>
+
+<h2>The Simplest Example</h2>
+
+<p>In a new directory create <code>Broccoli.js</code> and <code>javascripts/app.js</code>.</p>
+<div class="highlight"><pre><code class="js language-js" data-lang="js"><span class="c1">// Brocfile.js</span>
+<span class="nx">module</span><span class="p">.</span><span class="nx">exports</span> <span class="o">=</span> <span class="kd">function</span> <span class="p">(</span><span class="nx">broccoli</span><span class="p">)</span> <span class="p">{</span>
+  <span class="kd">var</span> <span class="nx">tree</span> <span class="o">=</span> <span class="nx">broccoli</span><span class="p">.</span><span class="nx">makeTree</span><span class="p">(</span><span class="s1">&#39;javascripts&#39;</span><span class="p">);</span>
+  <span class="k">return</span> <span class="p">[</span><span class="nx">tree</span><span class="p">];</span>
+<span class="p">};</span>
+</code></pre></div><div class="highlight"><pre><code class="js language-js" data-lang="js"><span class="c1">// javascripts/app.js</span>
+<span class="nx">console</span><span class="p">.</span><span class="nx">log</span><span class="p">(</span><span class="s1">&#39;Hello World&#39;</span><span class="p">);</span>
+</code></pre></div>
+<p>Install broccoli &amp; broccoli-cli then run the server.</p>
+<div class="highlight"><pre><code class="sh language-sh" data-lang="sh">npm install --save broccoli
+npm install --global broccoli-cli
+
+broccoli serve
+</code></pre></div>
+<p>Now you should be able to go to <a href="http://localhost:4200/app.js">http://localhost:4200/app.js</a> and see the contents of <code>app.js</code>. Now run <code>broccoli build &lt;folder-name&gt;</code>. This will save the same files served to a folder. You can use this to build the static files when you deploy your application (don&#39;t run the broccoli server in production).</p>
+
+<h2>A Useful Example</h2>
+
+<p>The real value of Broccoli is filtering files through plugins. Let&#39;s say you want to use ES6 features and compile to ES5.</p>
+
+<p>Install the traceur plugin.</p>
+<div class="highlight"><pre><code class="sh language-sh" data-lang="sh">npm install --save broccoli-traceur
+</code></pre></div>
+<p>Update <code>Brocfile.js</code> to filter files through traceur.</p>
+<div class="highlight"><pre><code class="js language-js" data-lang="js"><span class="nx">module</span><span class="p">.</span><span class="nx">exports</span> <span class="o">=</span> <span class="kd">function</span> <span class="p">(</span><span class="nx">broccoli</span><span class="p">)</span> <span class="p">{</span>
+  <span class="kd">var</span> <span class="nx">traceur</span> <span class="o">=</span> <span class="nx">require</span><span class="p">(</span><span class="s1">&#39;broccoli-traceur&#39;</span><span class="p">);</span>
+
+  <span class="kd">var</span> <span class="nx">tree</span> <span class="o">=</span> <span class="nx">broccoli</span><span class="p">.</span><span class="nx">makeTree</span><span class="p">(</span><span class="s1">&#39;javascripts&#39;</span><span class="p">);</span>
+  <span class="nx">tree</span> <span class="o">=</span> <span class="nx">traceur</span><span class="p">(</span><span class="nx">tree</span><span class="p">);</span>
+
+  <span class="k">return</span> <span class="p">[</span><span class="nx">tree</span><span class="p">];</span>
+<span class="p">};</span>
+</code></pre></div>
+<p>Add some snazzy ES6 code to <code>app.js</code></p>
+<div class="highlight"><pre><code class="js language-js" data-lang="js"><span class="kd">var</span> <span class="p">[</span><span class="nx">foo</span><span class="p">,</span> <span class="nx">bar</span><span class="p">]</span> <span class="o">=</span> <span class="p">[</span><span class="s1">&#39;foo&#39;</span><span class="p">,</span> <span class="s1">&#39;bar&#39;</span><span class="p">];</span>
+</code></pre></div>
+<p>Restart the broccoli server and you should see something like the following at <a href="http://localhost:4200/app.js">http://localhost:4200/app.js</a>.</p>
+<div class="highlight"><pre><code class="js language-js" data-lang="js"><span class="s2">&quot;use strict&quot;</span><span class="p">;</span>
+<span class="kd">var</span> <span class="nx">__moduleName</span> <span class="o">=</span> <span class="p">(</span><span class="k">void</span> <span class="mi">0</span><span class="p">);</span>
+<span class="kd">var</span> <span class="nx">$__0</span> <span class="o">=</span> <span class="p">[</span><span class="s1">&#39;foo&#39;</span><span class="p">,</span> <span class="s1">&#39;bar&#39;</span><span class="p">],</span>
+    <span class="nx">foo</span> <span class="o">=</span> <span class="nx">$__0</span><span class="p">[</span><span class="mi">0</span><span class="p">],</span>
+    <span class="nx">bar</span> <span class="o">=</span> <span class="nx">$__0</span><span class="p">[</span><span class="mi">1</span><span class="p">];</span>
+</code></pre></div>
+<h2>Using Multiple Plugins</h2>
+
+<p>Since broccoli plugins return file trees you can chain plugins. If you wanted to also minify your code you can run it through the <a href="https://github.com/joliss/broccoli-uglify-js">UglifyJS Plugin</a>.</p>
+<div class="highlight"><pre><code class="js language-js" data-lang="js"><span class="p">...</span>
+<span class="kd">var</span> <span class="nx">tree</span> <span class="o">=</span> <span class="nx">broccoli</span><span class="p">.</span><span class="nx">makeTree</span><span class="p">(</span><span class="s1">&#39;javascripts&#39;</span><span class="p">);</span>
+<span class="nx">tree</span> <span class="o">=</span> <span class="nx">traceur</span><span class="p">(</span><span class="nx">tree</span><span class="p">);</span>
+<span class="nx">tree</span> <span class="o">=</span> <span class="nx">uglifyJavaScript</span><span class="p">(</span><span class="nx">tree</span><span class="p">);</span>
+<span class="p">...</span>
+</code></pre></div>
+<p>I posted <a href="https://github.com/moudy/getting-started-with-broccoli">the code</a> on GitHub with setup instructions.</p>
+
+<h2>The Future</h2>
+
+<p>Broccoli is young but there are a good amount of <a href="https://www.npmjs.org/browse/keyword/broccoli-plugin">plugins on NPM</a>. It&#39;s useful enough that I&#39;m using it to manage assets on new projects. Check out the author&#39;s <a href="http://www.solitr.com/blog/2014/02/broccoli-first-release/">blog post</a> to find out more about the motivation behind the project, how it compares to existing solutions, and next steps.</p>
+
+  </div>
+</div>
+
+
+      <footer class='footer domino-5'>
+  <div class='content-width'>
+    <div class='footer-links'>
+      <script>
+        var emailAddr = ('me@' + 'moudy.me');
+        document.write('<a class="footer-link" href="mailto:'+emailAddr+'">Email</a>');
+      </script>
+      <a class='footer-link' target='_blank' href='http://github.com/moudy/'>GitHub</a>
+      <a class='footer-link' target='_blank' href='http://twitter.com/moudy/'>Twitter</a>
+    </div>
+  </div>
+</footer>
+
+    </div>
+
+    <script src="/assets/app-377d5c9299ebe1140d59a6a5e4d3723a.js"></script>
+    <script>
+      (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
+      (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+      m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+      })(window,document,'script','//www.google-analytics.com/analytics.js','ga');
+
+      ga('create', 'UA-48782540-1', 'moudy.me');
+      ga('send', 'pageview');
+    </script>
+  </body>
+</html>
