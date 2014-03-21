@@ -83,6 +83,8 @@ tree = uglifyJavaScript(tree);
 ...
 ```
 
+I posted [the code](https://github.com/moudy/getting-started-with-broccoli) on GitHub with setup instructions.
+
 ## The Future
 
 Broccoli is young but there are a good amount of [plugins on NPM](https://www.npmjs.org/browse/keyword/broccoli-plugin). It's useful enough that I'm using it to manage assets on new projects. Check out the author's [blog post](http://www.solitr.com/blog/2014/02/broccoli-first-release/) to find out more about the motivation behind the project, how it compares to existing solutions, and next steps.
