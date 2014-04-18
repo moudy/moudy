@@ -42,3 +42,46 @@
   color: #aaa;
   font-weight: 200;
 }
+
+.home-link {
+  position: relative;
+  .back {
+    position: absolute;
+    @include transform(translateX(10px));
+    opacity: 0;
+    color: $color-text-link;
+  }
+
+  .link-text, .back {
+    display: inline-block;
+    @include transition-duration (400ms);
+    @include transition-delay (400ms);
+    @include transition-timing-function(cubic-bezier(0.110, 0.545, 0.000, 1.650));
+  }
+
+}
+
+.not-home.ready {
+  .home-link {
+    .back {
+      opacity: 1;
+      @include transform(translateX(0px));
+    }
+    .link-text {
+      @include transform(translateX(14px));
+    }
+
+    &:hover {
+      .back {
+        @include transform(translateX(-3px));
+        @include transition-delay (0ms);
+      }
+    }
+    &:active {
+      .back {
+        @include transform(translateX(-30px));
+        @include transition-delay (0ms);
+      }
+    }
+  }
+}

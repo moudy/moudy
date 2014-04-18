@@ -30,7 +30,7 @@ a {
 }
 
 .content-width {
-  max-width: 700px;
+  max-width: $content-width;
   margin: 0 auto;
   padding: 0 10px;
 }

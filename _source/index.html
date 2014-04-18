@@ -13,13 +13,26 @@ title:  Moudy Elkammash
       <ul class="list">
         {% for project in site.data.projects %}
           <li>
-            {{ project.name }} <a href="{{ project.url }}" target="_blank" class="project-url">({{ project.url }})</a>
+            <a href="{{ project.url }}" target="_blank">{{ project.name }}</a>
           </li>
         {% endfor %}
       </ul>
     </div>
 
     <div class="list-section domino-3">
+      <h3 class="text-heading">
+        Thoughts
+      </h3>
+      <ul class="list">
+        {% for post in site.posts %}
+        <li>
+          <a href='{{ post.url }}'>{{ post.title }}</a>
+        </li>
+        {% endfor %}
+      </ul>
+    </div>
+
+    <div class="list-section domino-4">
       <h3 class="text-heading">
         Currently
       </h3>
