@@ -13,7 +13,7 @@
         de.className = de.className+' js';
       })();
     </script>
-    <link rel="stylesheet" href="/assets/app-3a7f53a5b01542b9483eddfcb4aaeac2.css">
+    <link rel="stylesheet" href="/assets/app-64d0a713cc658a59df2bb1681009259e.css">
   </head>
   <body>
     <div class="site">
@@ -47,16 +47,16 @@
 <h2>The Simplest Example</h2>
 
 <p>In a new directory create <code>Brocfile.js</code> and <code>javascripts/app.js</code>.</p>
-<div class="highlight"><pre><code class="js language-js" data-lang="js"><span class="c1">// Brocfile.js</span>
-<span class="nx">module</span><span class="p">.</span><span class="nx">exports</span> <span class="o">=</span> <span class="kd">function</span> <span class="p">(</span><span class="nx">broccoli</span><span class="p">)</span> <span class="p">{</span>
-  <span class="kd">var</span> <span class="nx">tree</span> <span class="o">=</span> <span class="nx">broccoli</span><span class="p">.</span><span class="nx">makeTree</span><span class="p">(</span><span class="s1">&#39;javascripts&#39;</span><span class="p">);</span>
-  <span class="k">return</span> <span class="p">[</span><span class="nx">tree</span><span class="p">];</span>
-<span class="p">};</span>
-</code></pre></div><div class="highlight"><pre><code class="js language-js" data-lang="js"><span class="c1">// javascripts/app.js</span>
-<span class="nx">console</span><span class="p">.</span><span class="nx">log</span><span class="p">(</span><span class="s1">&#39;Hello World&#39;</span><span class="p">);</span>
+<div class="highlight"><pre><code class="language-js" data-lang="js">// Brocfile.js
+module.exports = function (broccoli) {
+  var tree = broccoli.makeTree(&#39;javascripts&#39;);
+  return [tree];
+};
+</code></pre></div><div class="highlight"><pre><code class="language-js" data-lang="js">// javascripts/app.js
+console.log(&#39;Hello World&#39;);
 </code></pre></div>
 <p>Install broccoli &amp; broccoli-cli then run the server.</p>
-<div class="highlight"><pre><code class="sh language-sh" data-lang="sh">npm install --save broccoli
+<div class="highlight"><pre><code class="language-sh" data-lang="sh">npm install --save broccoli
 npm install --global broccoli-cli
 
 broccoli serve
@@ -68,41 +68,41 @@ broccoli serve
 <p>The real value of Broccoli is filtering files through plugins. Let&#39;s say you want to use ES6 features and compile to ES5.</p>
 
 <p>Install the traceur plugin.</p>
-<div class="highlight"><pre><code class="sh language-sh" data-lang="sh">npm install --save broccoli-traceur
+<div class="highlight"><pre><code class="language-sh" data-lang="sh">npm install --save broccoli-traceur
 </code></pre></div>
 <p>Update <code>Brocfile.js</code> to filter files through traceur.</p>
-<div class="highlight"><pre><code class="js language-js" data-lang="js"><span class="nx">module</span><span class="p">.</span><span class="nx">exports</span> <span class="o">=</span> <span class="kd">function</span> <span class="p">(</span><span class="nx">broccoli</span><span class="p">)</span> <span class="p">{</span>
-  <span class="kd">var</span> <span class="nx">traceur</span> <span class="o">=</span> <span class="nx">require</span><span class="p">(</span><span class="s1">&#39;broccoli-traceur&#39;</span><span class="p">);</span>
+<div class="highlight"><pre><code class="language-js" data-lang="js">module.exports = function (broccoli) {
+  var traceur = require(&#39;broccoli-traceur&#39;);
 
-  <span class="kd">var</span> <span class="nx">tree</span> <span class="o">=</span> <span class="nx">broccoli</span><span class="p">.</span><span class="nx">makeTree</span><span class="p">(</span><span class="s1">&#39;javascripts&#39;</span><span class="p">);</span>
-  <span class="nx">tree</span> <span class="o">=</span> <span class="nx">traceur</span><span class="p">(</span><span class="nx">tree</span><span class="p">);</span>
+  var tree = broccoli.makeTree(&#39;javascripts&#39;);
+  tree = traceur(tree);
 
-  <span class="k">return</span> <span class="p">[</span><span class="nx">tree</span><span class="p">];</span>
-<span class="p">};</span>
+  return [tree];
+};
 </code></pre></div>
 <p>Add some snazzy ES6 code to <code>javascripts/app.js</code></p>
-<div class="highlight"><pre><code class="js language-js" data-lang="js"><span class="kd">var</span> <span class="p">[</span><span class="nx">foo</span><span class="p">,</span> <span class="nx">bar</span><span class="p">]</span> <span class="o">=</span> <span class="p">[</span><span class="s1">&#39;foo&#39;</span><span class="p">,</span> <span class="s1">&#39;bar&#39;</span><span class="p">];</span>
+<div class="highlight"><pre><code class="language-js" data-lang="js">var [foo, bar] = [&#39;foo&#39;, &#39;bar&#39;];
 </code></pre></div>
 <p>Restart the broccoli server and you should see something like the following at <a href="http://localhost:4200/app.js">http://localhost:4200/app.js</a>.</p>
-<div class="highlight"><pre><code class="js language-js" data-lang="js"><span class="s2">&quot;use strict&quot;</span><span class="p">;</span>
-<span class="kd">var</span> <span class="nx">__moduleName</span> <span class="o">=</span> <span class="p">(</span><span class="k">void</span> <span class="mi">0</span><span class="p">);</span>
-<span class="kd">var</span> <span class="nx">$__0</span> <span class="o">=</span> <span class="p">[</span><span class="s1">&#39;foo&#39;</span><span class="p">,</span> <span class="s1">&#39;bar&#39;</span><span class="p">],</span>
-    <span class="nx">foo</span> <span class="o">=</span> <span class="nx">$__0</span><span class="p">[</span><span class="mi">0</span><span class="p">],</span>
-    <span class="nx">bar</span> <span class="o">=</span> <span class="nx">$__0</span><span class="p">[</span><span class="mi">1</span><span class="p">];</span>
+<div class="highlight"><pre><code class="language-js" data-lang="js">&quot;use strict&quot;;
+var __moduleName = (void 0);
+var $__0 = [&#39;foo&#39;, &#39;bar&#39;],
+    foo = $__0[0],
+    bar = $__0[1];
 </code></pre></div>
 <h2>Using Multiple Plugins</h2>
 
 <p>Since broccoli plugins return file trees you can chain plugins. If you wanted to also minify your code you can run it through the <a href="https://github.com/joliss/broccoli-uglify-js">UglifyJS Plugin</a>.</p>
-<div class="highlight"><pre><code class="sh language-sh" data-lang="sh">npm install --save broccoli-uglify-js
-</code></pre></div><div class="highlight"><pre><code class="js language-js" data-lang="js"><span class="p">...</span>
-<span class="kd">var</span> <span class="nx">traceur</span> <span class="o">=</span> <span class="nx">require</span><span class="p">(</span><span class="s1">&#39;broccoli-traceur&#39;</span><span class="p">);</span>
-<span class="kd">var</span> <span class="nx">uglifyJavaScript</span> <span class="o">=</span> <span class="nx">require</span><span class="p">(</span><span class="s1">&#39;broccoli-uglify-js&#39;</span><span class="p">);</span>
+<div class="highlight"><pre><code class="language-sh" data-lang="sh">npm install --save broccoli-uglify-js
+</code></pre></div><div class="highlight"><pre><code class="language-js" data-lang="js">...
+var traceur = require(&#39;broccoli-traceur&#39;);
+var uglifyJavaScript = require(&#39;broccoli-uglify-js&#39;);
 
-<span class="kd">var</span> <span class="nx">tree</span> <span class="o">=</span> <span class="nx">broccoli</span><span class="p">.</span><span class="nx">makeTree</span><span class="p">(</span><span class="s1">&#39;javascripts&#39;</span><span class="p">);</span>
+var tree = broccoli.makeTree(&#39;javascripts&#39;);
 
-<span class="nx">tree</span> <span class="o">=</span> <span class="nx">traceur</span><span class="p">(</span><span class="nx">tree</span><span class="p">);</span>
-<span class="nx">tree</span> <span class="o">=</span> <span class="nx">uglifyJavaScript</span><span class="p">(</span><span class="nx">tree</span><span class="p">);</span>
-<span class="p">...</span>
+tree = traceur(tree);
+tree = uglifyJavaScript(tree);
+...
 </code></pre></div>
 <p>I posted <a href="https://github.com/moudy/getting-started-with-broccoli">the code</a> on GitHub with setup instructions.</p>
 
@@ -129,7 +129,7 @@ broccoli serve
 
     </div>
 
-    <script src="/assets/app-1fa3b5298b3eb966b91a7b173c233232.js"></script>
+    <script src="/assets/app-2af7b3e63b054644a437e6cfc9371011.js"></script>
     <script>
       (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
       (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),

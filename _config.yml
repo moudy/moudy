@@ -1,7 +1,7 @@
 name: Moudy
 permalink: pretty
 markdown: redcarpet
-pygments: true
+highlighter: true
 source: ./_source
 plugins: ./_source/_plugins
 
