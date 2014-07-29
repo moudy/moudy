@@ -1,0 +1,27 @@
+{
+  "name": "moudy.me",
+  "version": "0.0.0",
+  "description": "My personal site",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/moudy/moudy.github.io.git"
+  },
+  "author": "Moudy <moudy.elkammash@gmail.com>",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/moudy/moudy.github.io/issues"
+  },
+  "homepage": "https://github.com/moudy/moudy.github.io",
+  "dependencies": {
+    "broccoli-taco": "0.0.3",
+    "broccoli-browserify": "^0.1.0",
+    "broccoli-clean-css": "^0.2.0",
+    "broccoli-fingerprint": "0.0.4",
+    "broccoli-sass": "^0.2.1",
+    "broccoli-uglify-js": "^0.1.3"
+  }
+}

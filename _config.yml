@@ -1,7 +1,0 @@
-name: Moudy
-permalink: pretty
-markdown: redcarpet
-highlighter: true
-source: ./_source
-plugins: ./_source/_plugins
-

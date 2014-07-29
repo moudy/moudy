@@ -1,0 +1,46 @@
+{{#layout}}
+<div class="page-home">
+  <div class="content-width">
+
+    <div class="list-section domino-2">
+      <h3 class="text-heading">
+        Projects
+      </h3>
+      <ul class="list">
+        {{#each page.projects}}
+        <li>
+        <a href="{{url}}" target="_blank">{{name}}</a>
+        </li>
+        {{/each}}
+      </ul>
+    </div>
+
+    <div class="list-section domino-4">
+      <h3 class="text-heading">
+        Currently
+      </h3>
+      <ul class="list">
+        {{#each page.about}}
+        <li>
+        {{text}}
+        </li>
+        {{/each}}
+      </ul>
+    </div>
+
+    <div class="list-section domino-4">
+      <h3 class="text-heading">
+        Previously
+      </h3>
+      <ul class="list">
+        {{#each page.experience}}
+        <li>
+        {{name}} <a href="{{ url }}" target="_blank" class="project-url">({{url}})</a>
+        </li>
+        {{/each}}
+      </ul>
+    </div>
+
+  </div>
+</div>
+{{/layout}}
